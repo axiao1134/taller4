@@ -1,22 +1,39 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class Artista {
 	private String nombreArtistico;
 	private String generoMusical;
 	private List<EventoMusical> eventosParticipados;
-	private Vector<EventoMusical> eventosMusicales = new Vector<EventoMusical>();
+
+	public Artista(String nombreArtistico, String generoMusical) {
+		this.nombreArtistico = nombreArtistico;
+		this.generoMusical = generoMusical;
+		this.eventosParticipados = new ArrayList<>();
+	}
 
 	public void registrarEvento(EventoMusical eventoMusical) {
-		eventosMusicales.add(eventoMusical);
+		eventosParticipados.add(eventoMusical);
 		eventoMusical.agregarArtista(this);
 	}
 
 	public void cancelarParticipacion(EventoMusical eventoMusical) {
-		eventosMusicales.remove(eventoMusical);
+		eventosParticipados.remove(eventoMusical);
 		eventoMusical.removerArtista(this);
+	}
+
+	public String getNombreArtistico() {
+		return nombreArtistico;
+	}
+
+	public String getGeneroMusical() {
+		return generoMusical;
+	}
+
+	public List<EventoMusical> getEventosParticipados() {
+		return new ArrayList<>(eventosParticipados);
 	}
 
 	public String obtenerDetallesArtista() {

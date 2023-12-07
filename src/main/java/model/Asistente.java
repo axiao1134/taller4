@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Asistente {
@@ -7,6 +8,13 @@ public class Asistente {
 	private String informacionContacto;
 	private List<String> preferenciasMusicales;
 	private List<Entrada> entradasCompradas;
+
+	public Asistente(String nombre, String informacionContacto) {
+		this.nombre = nombre;
+		this.informacionContacto = informacionContacto;
+		this.preferenciasMusicales = (preferenciasMusicales != null) ? new ArrayList<>(preferenciasMusicales) : new ArrayList<>();
+		this.entradasCompradas = new ArrayList<>();
+	}
 
 	public void comprarEntrada(Entrada entrada) {
 		entradasCompradas.add(entrada);
@@ -34,5 +42,13 @@ public class Asistente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getInformacionContacto() {
+		return informacionContacto;
+	}
+
+	public void setInformacionContacto(String informacionContacto) {
+		this.informacionContacto = informacionContacto;
 	}
 }
